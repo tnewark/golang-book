@@ -38,5 +38,22 @@ func main() {
 	fmt.Println(strings.Replace("aaaa", "a", "b", 2))
 	// => "bbaa"
 
+	// func Split(s, sep string) []sgring
+	fmt.Println(strings.Split("a-b-c-d-e", "-"))
+	// => []string{"a", "b", "c", "d", "e"}	
+
+	// func ToLower(s string) string
+	fmt.Println(strings.ToLower("TEST"))
+	// => "test"
+
+	// funct ToUpper(s string) string
+	fmt.Println(strings.ToUpper("test"))
+	// => "TEST"
 	
+	// casting between string and byte
+	arr := []byte("test")
+	fmt.Println(arr)
+	str := string([]byte{'t', 'e','s','t'})
+	fmt.Println(str)
+
 }
