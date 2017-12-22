@@ -59,6 +59,8 @@ func main() {
 	fmt.Println(str)
 
 	//** this is the Input/Output section
+
+	//* first example, raw library calls
 	file, err := os.Open("test.txt")
 	if err != nil {
 		// handle error here
@@ -81,6 +83,7 @@ func main() {
 	str = string(bs)
 	fmt.Println(str)
 
+	//* second, simplified example using ioutil
 	bs, err = ioutil.ReadFile("test.txt")
 	if err != nil {
 		return
