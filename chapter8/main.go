@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
+	"os"
 	"strings"
 )
 
@@ -26,8 +28,8 @@ func main() {
 	fmt.Println(strings.Index("test", "e"))
 	// => 1
 
-	// func Join(a []string, sep string) string 
-	fmt.Println(strings.Join([]string{"a","b"}, "-"))
+	// func Join(a []string, sep string) string
+	fmt.Println(strings.Join([]string{"a", "b"}, "-"))
 	// => a-b
 
 	// func Repeat(s string, count int) string
@@ -40,7 +42,7 @@ func main() {
 
 	// func Split(s, sep string) []sgring
 	fmt.Println(strings.Split("a-b-c-d-e", "-"))
-	// => []string{"a", "b", "c", "d", "e"}	
+	// => []string{"a", "b", "c", "d", "e"}
 
 	// func ToLower(s string) string
 	fmt.Println(strings.ToLower("TEST"))
@@ -49,11 +51,40 @@ func main() {
 	// funct ToUpper(s string) string
 	fmt.Println(strings.ToUpper("test"))
 	// => "TEST"
-	
+
 	// casting between string and byte
 	arr := []byte("test")
 	fmt.Println(arr)
-	str := string([]byte{'t', 'e','s','t'})
+	str := string([]byte{'t', 'e', 's', 't'})
 	fmt.Println(str)
 
+	//** this is the Input/Output section
+	file, err := os.Open("test.txt")
+	if err != nil {
+		// handle error here
+		return
+	}
+	defer file.Close()
+
+	// get the file size
+	stat, err := file.Stat()
+	if err != nil {
+		return
+	}
+	// read the file
+	bs := make([]byte, stat.Size())
+	_, err = file.Read(bs)
+	if err != nil {
+		return
+	}
+
+	str = string(bs)
+	fmt.Println(str)
+
+	bs, err = ioutil.ReadFile("test.txt")
+	if err != nil {
+		return
+	}
+	str = string(bs)
+	fmt.Println(str)
 }

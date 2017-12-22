@@ -1,0 +1,3 @@
+We use defer file.Close() right after opening the file to make sure the file is 
+closed as soon as the function completes. Reading files is very common, so there’s 
+a shorter way to do this:
